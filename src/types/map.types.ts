@@ -12,3 +12,5 @@ export interface GeocodeResult {
   address: string;
   coordinates: Coordinates;
 }
+
+export type MapProvider = 'OSM' | 'STADIA_DARK' | 'GOOGLE_HYBRID';

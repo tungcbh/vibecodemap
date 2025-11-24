@@ -1,74 +1,40 @@
-# React + TypeScript + Vite
+# VibeCodeMap
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern map application built with **React (Vite)**, **TypeScript**, and **OpenLayers**, designed with **Clean Architecture** principles.
 
-Currently, two official plugins are available:
+## Tech Stack
+-   **Core:** React 18, TypeScript, Vite
+-   **Map Engine:** OpenLayers (ol)
+-   **Styling:** CSS Modules / Vanilla CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
+-   **Clean Architecture:** Strict separation of UI, Logic (Hooks), and Domain (Utils).
+-   **Base Layer Switching:** Seamlessly switch between OSM, Stadia Dark, and Google Hybrid.
+-   **Scalable Codebase:** Loose coupling ensures easy addition of new map providers.
+-   **Type Safety:** Fully typed with TypeScript.
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-## Expanding the ESLint configuration
+2.  **Configure Environment:**
+    Copy `.env.example` to `.env` and add your API keys:
+    ```env
+    VITE_GOOGLE_API_KEY=your_key
+    VITE_STADIA_API_KEY=your_key
+    ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3.  **Run Development Server:**
+    ```bash
+    npm run dev
+    ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-# vibecodemap
+## Project Structure
+-   `src/components`: UI Components (View).
+-   `src/hooks`: Business Logic & State (ViewModel).
+-   `src/utils`: Domain Logic & Helper Functions.
+-   `src/types`: TypeScript Interfaces.
+-   `src/config`: App Constants.
