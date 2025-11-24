@@ -1,42 +1,211 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+#root,
+.App {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle at top, #12233b, #050c16 65%);
+  overflow: hidden;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+}
+
+.map-overlay-panel {
+  position: absolute;
+  z-index: 1000;
+  background: rgba(9, 18, 32, 0.9);
+  color: #e0e9ff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.layer-switcher {
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.search-panel {
+  top: 90px;
+  left: 16px;
+  width: 320px;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fbff;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 0.9rem;
+  background: linear-gradient(135deg, #3572ff, #1b48b3);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 120ms ease;
+}
+
+.search-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.search-status {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.search-status.error {
+  color: #ff8a91;
+}
+
+.search-status.success {
+  color: #8ad2ff;
+}
+
+.layer-switcher select {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f5f8ff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.map-controls {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.map-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.map-control-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(3, 8, 18, 0.85);
+  color: #f0f5ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border 120ms ease;
+}
+
+.map-control-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: rgba(12, 34, 66, 0.9);
+}
+
+.map-control-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* .mouse-position-panel {
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
   text-align: center;
+  font-weight: 500;
+  width: max-content;
+} */
+
+.user-position-panel {
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.85rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mouse-position-panel {
+  position: absolute;
+  z-index: 1000;
+  background-color: rgba(53, 85, 137, 0.9);
+  bottom: 100px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.85rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* .mouse-position-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
 }
 
-.card {
-  padding: 2em;
+.mouse-position-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
 }
 
-.read-the-docs {
-  color: #888;
+.mouse-position-value,
+.mouse-position-control {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.95rem;
+}
+
+.mouse-position-control {
+  color: #e8efff;
+} */
+
+.map-loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  z-index: 1200;
 }

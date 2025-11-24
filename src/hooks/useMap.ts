@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  type MutableRefObject,
+  type RefObject,
+} from 'react';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
@@ -7,11 +13,14 @@ import { MAP_CONFIG } from '../config/mapConfig';
 import type { MapProvider } from '../types/map.types';
 import { createBaseLayerSource } from '../utils/mapLayerUtils';
 
-export const useMap = (containerRef: React.RefObject<HTMLDivElement>) => {
+export const useMap = (
+  containerRef: RefObject<HTMLDivElement> | MutableRefObject<HTMLDivElement | null>
+) => {
   const mapRef = useRef<Map | null>(null);
   const baseLayerRef = useRef<TileLayer | null>(null);
   const [isMapReady, setIsMapReady] = useState(false);
   const [currentProvider, setCurrentProvider] = useState<MapProvider>('OSM');
+  const [mapInstance, setMapInstance] = useState<Map | null>(null);
 
   useEffect(() => {
     const target = containerRef.current;
@@ -34,12 +43,14 @@ export const useMap = (containerRef: React.RefObject<HTMLDivElement>) => {
     });
 
     mapRef.current = map;
+    setMapInstance(map);
     setIsMapReady(true);
 
     return () => {
       map.setTarget(undefined);
       mapRef.current = null;
       baseLayerRef.current = null;
+      setMapInstance(null);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -63,5 +74,5 @@ export const useMap = (containerRef: React.RefObject<HTMLDivElement>) => {
 
   const getMap = () => mapRef.current;
 
-  return { getMap, isMapReady, setCenter, changeBaseLayer, currentProvider };
+  return { getMap, mapInstance, isMapReady, setCenter, changeBaseLayer, currentProvider };
 };
