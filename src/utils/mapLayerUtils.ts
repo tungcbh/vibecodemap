@@ -12,9 +12,14 @@ export const createBaseLayerSource = (provider: MapProvider) => {
         attributions:
           '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       });
-    case 'GOOGLE_HYBRID': 
+    case 'GOOGLE_SATELINE': 
       return new XYZ({
         url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
+        attributions: '&copy; Google Maps',
+      });
+    case 'GOOGLE_STREET':
+      return new XYZ({
+        url: 'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
         attributions: '&copy; Google Maps',
       });
     default:

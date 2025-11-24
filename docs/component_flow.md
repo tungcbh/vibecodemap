@@ -51,10 +51,10 @@ The application is divided into three main layers:
 5.  `isMapReady` state is set to `true`, notifying `MapComponent`.
 
 ### 2. Layer Switching (Loose Coupling Example)
-1.  User selects a new layer (e.g., "Google Hybrid") in `MapComponent`.
-2.  `MapComponent` calls `changeBaseLayer('GOOGLE_HYBRID')` from `useMap`.
-3.  `useMap` calls `createBaseLayerSource('GOOGLE_HYBRID')` from `mapLayerUtils`.
-4.  `mapLayerUtils` returns the specific `ol/source` configured for Google Hybrid.
+1.  User selects a new layer (e.g., "Google Sateline") in `MapComponent`.
+2.  `MapComponent` calls `changeBaseLayer('GOOGLE_SATELINE')` from `useMap`.
+3.  `useMap` calls `createBaseLayerSource('GOOGLE_SATELINE')` from `mapLayerUtils`.
+4.  `mapLayerUtils` returns the specific `ol/source` configured for Google Sateline.
 5.  `useMap` updates the existing `baseLayer` with the new source (`baseLayer.setSource(newSource)`).
     *   *Note*: The map object is NOT recreated, ensuring performance.
 

@@ -13,4 +13,4 @@ export interface GeocodeResult {
   coordinates: Coordinates;
 }
 
-export type MapProvider = 'OSM' | 'STADIA_DARK' | 'GOOGLE_HYBRID';
+export type MapProvider = 'OSM' | 'STADIA_DARK' | 'GOOGLE_SATELINE' | 'GOOGLE_STREET';

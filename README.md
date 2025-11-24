@@ -9,7 +9,7 @@ A modern map application built with **React (Vite)**, **TypeScript**, and **Open
 
 ## Key Features
 -   **Clean Architecture:** Strict separation of UI, Logic (Hooks), and Domain (Utils).
--   **Base Layer Switching:** Seamlessly switch between OSM, Stadia Dark, and Google Hybrid.
+-   **Base Layer Switching:** Seamlessly switch between OSM, Stadia Dark, and Google Sateline.
 -   **Scalable Codebase:** Loose coupling ensures easy addition of new map providers.
 -   **Type Safety:** Fully typed with TypeScript.
 

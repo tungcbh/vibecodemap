@@ -41,7 +41,8 @@ const MapComponent: React.FC = () => {
         >
           <option value="OSM">OpenStreetMap</option>
           <option value="STADIA_DARK">Stadia Dark</option>
-          <option value="GOOGLE_HYBRID">Google Hybrid</option>
+          <option value="GOOGLE_SATELINE">Google Sateline</option>
+          <option value="GOOGLE_STREET">Google Street</option>
         </select>
       </div>
       {!isMapReady && <div>Loading Map...</div>}
